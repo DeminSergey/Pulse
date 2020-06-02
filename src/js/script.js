@@ -44,4 +44,34 @@ $(document).ready(function(){
             $('.overlay, #order').fadeIn('slow');
         })
     });
+    
+    function validateForms(form) {
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Пожалуйста, введите имя",
+                    minlength: jQuery.validator.format("Имя должно состоять из {0} символов минимум!")
+                },
+                phone: "Пожалуйста, введите номер телефона",
+                email: {
+                    required: "Пожалуйста, введите e-mail",
+                    email: "Ваш e-mail должен быть формата name@domain.ru"
+                }
+            }
+        });
+    };
+    validateForms('#consultation-form');
+    validateForms('#consultation form');
+    validateForms('#order form');
 });
